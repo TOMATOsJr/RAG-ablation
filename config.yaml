@@ -1,0 +1,42 @@
+# ============================================================================
+# RAG ablation study — configuration
+# Edit values here instead of touching the notebook code.
+# ============================================================================
+
+data:
+  # Single complex PDF used as the corpus (ITF Rules of Tennis, 2026 edition).
+  pdf_path: "2026-rules-of-tennis-english.pdf"
+
+chunking:
+  # Max words per chunk. Rule/case boundaries are respected, so most chunks are
+  # shorter than this; only oversized blocks are split with overlap.
+  chunk_size_words: 180
+  # Words repeated between two oversized sub-chunks when a block must be split.
+  chunk_overlap_words: 30
+  # Blocks smaller than this are merged into the previous chunk when possible.
+  min_chunk_words: 25
+
+retrieval:
+  top_k_initial: 10   # candidates returned by the baseline bi-encoder
+  top_k_final: 3      # chunks passed to the LLM prompt (identical in both pipelines)
+
+models:
+  bi_encoder: "sentence-transformers/all-MiniLM-L6-v2"       # dense retrieval (dual-encoder)
+  cross_encoder: "cross-encoder/ms-marco-MiniLM-L-6-v2"      # re-ranker (single encoder)
+  # "cpu" gives stable latency numbers. Use "cuda" if a GPU is available,
+  # or null to let sentence-transformers auto-select.
+  device: "cpu"
+
+llm:
+  provider: "gemini"
+  model: "gemini-3.1-flash-lite"
+  temperature: 0.0        # deterministic-ish answers for a fair A/B comparison
+  max_output_tokens: 600
+  # API key is read from the GEMINI_API_KEY environment variable (.env file).
+
+profiling:
+  warmup_runs: 3
+  timed_runs: 15
+  # Scaling experiment: cross-encoder cost when scoring the whole corpus
+  # instead of only the top-k candidates.
+  scaling_targets: [1000, 10000, 100000]

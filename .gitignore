@@ -1,0 +1,15 @@
+# Secrets — never commit the real key
+.env
+
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Model / data caches
+.cache/
+*.tar.gz

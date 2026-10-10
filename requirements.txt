@@ -1,0 +1,32 @@
+# RAG ablation: Baseline vs. Re-Ranking
+# Python 3.14 compatible (verified with pip --dry-run)
+#
+# Install (CPU-only machine, avoids the ~2.5 GB CUDA wheels that PyPI's torch pulls in):
+#   python -m venv .venv
+#   .venv/bin/pip install --upgrade pip
+#   .venv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   .venv/bin/pip install -r requirements.txt
+#
+# On an NVIDIA GPU box, just use: .venv/bin/pip install -r requirements.txt
+
+# --- Embeddings + re-ranking ---
+sentence-transformers>=5.0
+faiss-cpu>=1.9
+
+# --- LLM (Gemini) ---
+google-generativeai>=0.8
+
+# --- PDF text extraction ---
+pypdf>=5.0
+
+# --- Config / secrets ---
+python-dotenv>=1.0
+
+# --- Analysis + latency tables ---
+pandas>=2.2
+numpy>=2.0
+
+# --- Notebook ---
+jupyter>=1.1
+ipykernel>=6.29
+nbconvert>=7.16
