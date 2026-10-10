@@ -13,3 +13,5 @@ __pycache__/
 # Model / data caches
 .cache/
 *.tar.gz
+
+*.pdf

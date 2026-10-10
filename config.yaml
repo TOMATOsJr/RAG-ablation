@@ -25,7 +25,7 @@ models:
   cross_encoder: "cross-encoder/ms-marco-MiniLM-L-6-v2"      # re-ranker (single encoder)
   # "cpu" gives stable latency numbers. Use "cuda" if a GPU is available,
   # or null to let sentence-transformers auto-select.
-  device: "cpu"
+  device: "cuda"
 
 llm:
   provider: "gemini"
