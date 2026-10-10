@@ -1,0 +1,11 @@
+{
+  "corpus_pdf": "2026-rules-of-tennis-english.pdf",
+  "chunk_count": 150,
+  "top_k_initial": 10,
+  "top_k_final": 3,
+  "query_count": 9,
+  "baseline_top3_misses": 2,
+  "rerank_top3_recoveries": 2,
+  "device": "cuda",
+  "gemini_key_configured": true
+}

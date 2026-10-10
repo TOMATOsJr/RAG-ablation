@@ -1,0 +1,4 @@
+pipeline_stage,mean_ms,median_ms,p95_ms,std_ms
+Baseline: Bi-Encoder + FAISS,4.83,4.82,5.57,0.52
+Cross-Encoder stage (10 pairs),123.69,122.9,129.62,3.62
+Re-ranking: retrieval + Cross-Encoder,128.18,127.98,130.07,1.36
